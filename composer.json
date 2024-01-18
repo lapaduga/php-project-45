@@ -1,0 +1,20 @@
+{
+    "name": "hexlet/code",
+    "bin": [
+	"bin/brain-games"
+	],
+    "autoload": {
+        "psr-4": {
+            "Lapaduga\\PhpProject45\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "lapaduga",
+            "email": "deniskotov29042015@gmail.com"
+        }
+    ],
+    "description": "hexlet study project",
+    "license": "MIT",
+    "require": {}
+}
