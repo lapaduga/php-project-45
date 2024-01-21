@@ -2,6 +2,7 @@
 
 namespace BrainGames\Cli;
 
-function line ($str, $name = '') {
-	echo $str;
+function line($str, $name = '')
+{
+    echo $str;
 }
