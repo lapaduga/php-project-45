@@ -1,25 +1,26 @@
 {
-    "name": "hexlet/code",
-    "bin": [
-	"bin/brain-games"
+	"name": "hexlet/code",
+	"bin": [
+		"bin/brain-games",
+		"bin/brain-even"
 	],
-    "autoload": {
-        "psr-4": {
-            "Lapaduga\\PhpProject45\\": "src/"
-        }
-    },
-    "authors": [
-        {
-            "name": "lapaduga",
-            "email": "deniskotov29042015@gmail.com"
-        }
-    ],
-    "description": "hexlet study project",
-    "license": "MIT",
-    "require": {
-        "wp-cli/php-cli-tools": "^0.11.22"
-    },
-    "require-dev": {
-        "squizlabs/php_codesniffer": "^3.8"
-    }
+	"autoload": {
+		"psr-4": {
+			"Lapaduga\\PhpProject45\\": "src/"
+		}
+	},
+	"authors": [
+		{
+			"name": "lapaduga",
+			"email": "deniskotov29042015@gmail.com"
+		}
+	],
+	"description": "hexlet study project",
+	"license": "MIT",
+	"require": {
+		"wp-cli/php-cli-tools": "^0.11.22"
+	},
+	"require-dev": {
+		"squizlabs/php_codesniffer": "^3.8"
+	}
 }
