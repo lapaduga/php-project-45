@@ -55,8 +55,7 @@ function checkUserInput(string $name): void
     while ($countCorrecctAnswers < 3) {
         $randomNumber1 = rand(0, 100);
         $randomNumber2 = rand(0, 100);
-        $result = gcd($randomNumber1, $randomNumber1);
-        line($result);
+        $result = gcd($randomNumber1, $randomNumber2);
 
         $answer = prompt("Question: $randomNumber1 $randomNumber2");
         $answer = trim(strtolower($answer));
@@ -90,14 +89,15 @@ function checkUserInput(string $name): void
   **/
 function gcd($a,$b)
 {
-    if ($a == 0) {
+    if ($a === 0) {
         return $b;
     }
-    if ($b == 0) {
+    
+    if ($b === 0) {
         return $a;
     }
 
-    if ($a == $b) {
+    if ($a === $b) {
         return $a ;
     }
 

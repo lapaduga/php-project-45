@@ -20,7 +20,7 @@ lint:
 	composer exec --verbose phpcs -- --standard=PSR12 src bin
 
 rec-cast:
-	asciinema rec demo.cast
+	asciinema rec demo.cast --append
 
 upload-cast:
 	asciinema upload demo.cast
