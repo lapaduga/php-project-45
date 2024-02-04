@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Calculate the numbers game
+ * Calculate the GCD game
  * PHP version 8.1.2-1ubuntu2.14
  *
  * @category BrainGcd
