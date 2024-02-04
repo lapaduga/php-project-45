@@ -1,0 +1,9 @@
+#!/usr/bin/env php
+
+<?php
+
+require_once './src/BrainPrime.php';
+
+use function BrainGames\BrainPrime\startBrainPrime;
+
+startBrainPrime();
