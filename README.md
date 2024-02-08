@@ -16,3 +16,6 @@ https://asciinema.org/a/OXNUTrWil5Rg9GFIDeECudGTh
 
 ### Link to asciinema screencast of the 8th step
 https://asciinema.org/a/WrRPNHBEgcjUG7JOGssYzRdhb
+
+### Link to asciinema screencast of the 9th step
+https://asciinema.org/a/KpQeZsGnc4cvTHEmhimoBFcLT

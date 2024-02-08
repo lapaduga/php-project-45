@@ -52,37 +52,35 @@ function checkUserInput(string $name): void
 {
     $countCorrecctAnswers = 0;
     
-    /*     while ($countCorrecctAnswers < 3) {
-        $arrayLength = 10;
-        $hiddenPosition = rand(0, $arrayLength - 1);
-        $step = rand(2, 6);
-        $startFrom = rand(0, 100);
-        $array = [$startFrom];
+    while ($countCorrecctAnswers < 3) {
+        $number = rand(0, 100);
+        $result = isPrime($number);
 
-        for ($i = 0; $i < $arrayLength; $i++) {
-            $array[] = $array[$i] + $step;
-        }
-    
-        $hiddenNumber = $array[$hiddenPosition];
-        $array[$hiddenPosition] = "..";
-        $stringArray = implode(' ', $array);
-
-        $guess = prompt("Question: $stringArray");
+        $guess = prompt("Question: $number");
         $guess = trim(strtolower($guess));
 
         line("Your answer: $guess");
 
-        if ($guess == $hiddenNumber) {
-            $countCorrecctAnswers++;
-            line("Correct!");
+        if ($result === true) {
+            if ($guess === "yes") {
+                $countCorrecctAnswers++;
+                line("Correct!");
+            } else {
+                $countCorrecctAnswers = 0;
+                line("'no' is wrong answer ;(. Correct answer was 'yes'.");
+            }
         } else {
-            $countCorrecctAnswers = 0;
-            line("$guess is wrong answer ;(. Correct answer was $hiddenNumber.");
+            if ($guess === "no") {
+                $countCorrecctAnswers++;
+                line("Correct!");
+            } else {
+                $countCorrecctAnswers = 0;
+                line("'yes' is wrong answer ;(. Correct answer was 'no'.");
+            }
         }
     }
     
-    line("Congratulations, %s!", $name); */
-    line("lol");
+    line("Congratulations, %s!", $name);
 }
 
  /**
