@@ -10,12 +10,12 @@
 	],
 	"autoload": {
 		"files": [
-			"./src/Cli.php",
-			"./src/BrainPrime.php",
-			"./src/BrainProgression.php",
-			"./src/BrainGcd.php",
-			"./src/BrainCalc.php",
-			"./src/BrainEven.php"
+			"src/Cli.php",
+			"src/BrainPrime.php",
+			"src/BrainProgression.php",
+			"src/BrainGcd.php",
+			"src/BrainCalc.php",
+			"src/BrainEven.php"
 		]
 	},
 	"authors": [
