@@ -9,9 +9,14 @@
 		"bin/brain-prime"
 	],
 	"autoload": {
-		"psr-4": {
-			"Lapaduga\\PhpProject45\\": "src/"
-		}
+		"files": [
+			"./src/Cli.php",
+			"./src/BrainPrime.php",
+			"./src/BrainProgression.php",
+			"./src/BrainGcd.php",
+			"./src/BrainCalc.php",
+			"./src/BrainEven.php"
+		]
 	},
 	"authors": [
 		{
