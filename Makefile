@@ -1,6 +1,9 @@
 install:
 	composer install
 
+dump:
+	composer dump-autoload
+
 brain-games:
 	./bin/brain-games
 
