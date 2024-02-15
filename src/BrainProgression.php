@@ -17,7 +17,7 @@ use function cli\line;
 use function cli\prompt;
 
  /**
-  * Start BrainProgression game 
+  * Start BrainProgression game
   *
   * @return void
   **/
@@ -32,7 +32,7 @@ function startBrainProgression()
 }
 
  /**
-  * Check if user input defines number properly 
+  * Check if user input defines number properly
   *
   * @param string $name user name
   *
@@ -41,7 +41,7 @@ function startBrainProgression()
 function checkUserInput(string $name): void
 {
     $countCorrecctAnswers = 0;
-    
+
     while ($countCorrecctAnswers < 3) {
         $arrayLength = 10;
         $hiddenPosition = rand(0, $arrayLength - 1);
@@ -52,7 +52,7 @@ function checkUserInput(string $name): void
         for ($i = 0; $i < $arrayLength; $i++) {
             $array[] = $array[$i] + $step;
         }
-    
+
         $hiddenNumber = $array[$hiddenPosition];
         $array[$hiddenPosition] = "..";
         $stringArray = implode(' ', $array);
@@ -70,7 +70,7 @@ function checkUserInput(string $name): void
             break;
         }
     }
-    
+
     if ($countCorrecctAnswers === 3) {
         line("Congratulations, %s!", $name);
     }

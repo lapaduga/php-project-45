@@ -17,7 +17,7 @@ use function cli\line;
 use function cli\prompt;
 
  /**
-  * Start BrainCalc game 
+  * Start BrainCalc game
   *
   * @param string   $string   Specific text for a specific game
   * @param callable $callback Specific callback for a specific game

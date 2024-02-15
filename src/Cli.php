@@ -17,7 +17,7 @@ use function cli\line;
 use function cli\prompt;
 
  /**
-  * Greets a player 
+  * Greets a player
   *
   * @return void
   **/

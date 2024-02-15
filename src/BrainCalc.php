@@ -17,7 +17,7 @@ use function cli\line;
 use function cli\prompt;
 
  /**
-  * Start BrainCalc game 
+  * Start BrainCalc game
   *
   * @return void
   **/
@@ -32,7 +32,7 @@ function startBrainCalc()
 }
 
  /**
-  * Check if user input defines number properly 
+  * Check if user input defines number properly
   *
   * @param string $name user name
   *
@@ -42,7 +42,7 @@ function checkUserInput(string $name): void
 {
     $countCorrecctAnswers = 0;
     $operations = ["+", "-", "*"];
-    
+
     while ($countCorrecctAnswers < 3) {
         $randomNumber1 = rand(0, 10);
         $randomNumber2 = rand(0, 10);
@@ -59,7 +59,7 @@ function checkUserInput(string $name): void
 
         line("Question: $randomNumber1 $randomOperation $randomNumber2");
         $answer = prompt("Your answer");
-    
+
         if ($answer === "") {
             $countCorrecctAnswers = 0;
             line("Your answer can't be an empty string!");
@@ -75,7 +75,7 @@ function checkUserInput(string $name): void
             break;
         }
     }
-    
+
     if ($countCorrecctAnswers === 3) {
         line("Congratulations, %s!", $name);
     }

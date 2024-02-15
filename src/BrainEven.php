@@ -17,7 +17,7 @@ use function cli\line;
 use function cli\prompt;
 
  /**
-  * Start BrainEven game 
+  * Start BrainEven game
   *
   * @return void
   **/
@@ -32,7 +32,7 @@ function startBrainEvenGame()
 }
 
  /**
-  * Check if user input defines number properly 
+  * Check if user input defines number properly
   *
   * @param string $name user name
   *
@@ -51,9 +51,9 @@ function checkUserInput(string $name): void
             $countCorrecctAnswers = 0;
             line("Your answer can be only 'yes' or 'no' in any case!");
         }
-                
+
         $isEven = $randomNumber % 2 === 0;
-    
+
         if ($isEven) {
             if ($answer === "yes") {
                 $countCorrecctAnswers++;

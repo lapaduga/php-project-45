@@ -17,7 +17,7 @@ use function cli\line;
 use function cli\prompt;
 
  /**
-  * Start BrainGcd game 
+  * Start BrainGcd game
   *
   * @return void
   **/
@@ -32,7 +32,7 @@ function startBrainGcd()
 }
 
  /**
-  * Check if user input defines number properly 
+  * Check if user input defines number properly
   *
   * @param string $name user name
   *
@@ -41,7 +41,7 @@ function startBrainGcd()
 function checkUserInput(string $name): void
 {
     $countCorrecctAnswers = 0;
-    
+
     while ($countCorrecctAnswers < 3) {
         $randomNumber1 = rand(0, 10);
         $randomNumber2 = rand(0, 10);
@@ -49,7 +49,7 @@ function checkUserInput(string $name): void
 
         line("Question: $randomNumber1 $randomNumber2");
         $answer = prompt("Your answer");
-    
+
         if ($answer === "") {
             $countCorrecctAnswers = 0;
             line("Your answer can't be an empty string!");
@@ -65,26 +65,26 @@ function checkUserInput(string $name): void
             break;
         }
     }
-    
+
     if ($countCorrecctAnswers === 3) {
         line("Congratulations, %s!", $name);
     }
 }
 
  /**
-  * Finds the greatest common divisor 
+  * Finds the greatest common divisor
   *
   * @param int $a first number
   * @param int $b second number
   *
   * @return int
   **/
-function gcd($a,$b)
+function gcd($a, $b)
 {
     if ($a === 0) {
         return $b;
     }
-    
+
     if ($b === 0) {
         return $a;
     }
@@ -94,8 +94,8 @@ function gcd($a,$b)
     }
 
     if ($a > $b) {
-        return gcd($a-$b, $b);
+        return gcd($a - $b, $b);
     }
 
-    return gcd($a, $b-$a);
+    return gcd($a, $b - $a);
 }
