@@ -23,11 +23,10 @@ use function cli\prompt;
   **/
 function startBrainProgression()
 {
-    line("Welcome to the Brain Games!\n");
+    line("Welcome to the Brain Games!");
     $name = prompt('May I have your name?');
     line("Hello, %s!", $name);
-
-    line("What number is missing in the progression?\n");
+    line("What number is missing in the progression?");
 
     checkUserInput($name);
 }
@@ -58,10 +57,8 @@ function checkUserInput(string $name): void
         $array[$hiddenPosition] = "..";
         $stringArray = implode(' ', $array);
 
-        $guess = prompt("Question: $stringArray");
-        $guess = trim(strtolower($guess));
-
-        line("Your answer: $guess");
+        line("Question: $stringArray");
+        $guess = prompt("Your answer");
 
         if ($guess == $hiddenNumber) {
             $countCorrecctAnswers++;
@@ -69,8 +66,12 @@ function checkUserInput(string $name): void
         } else {
             $countCorrecctAnswers = 0;
             line("$guess is wrong answer ;(. Correct answer was $hiddenNumber.");
+            line("Let's try again, %s!", $name);
+            break;
         }
     }
     
-    line("Congratulations, %s!", $name);
+    if ($countCorrecctAnswers === 3) {
+        line("Congratulations, %s!", $name);
+    }
 }
