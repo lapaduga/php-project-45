@@ -26,8 +26,7 @@ function startBrainGcd()
     line("Welcome to the Brain Games!\n");
     $name = prompt('May I have your name?');
     line("Hello, %s!", $name);
-
-    line("Find the greatest common divisor of given numbers.\n");
+    line("Find the greatest common divisor of given numbers.");
 
     checkUserInput($name);
 }

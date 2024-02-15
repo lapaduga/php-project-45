@@ -23,11 +23,10 @@ use function cli\prompt;
   **/
 function startBrainPrime()
 {
-    line("Welcome to the Brain Games!\n");
+    line("Welcome to the Brain Games!");
     $name = prompt('May I have your name?');
     line("Hello, %s!", $name);
-
-    line("Answer 'yes' if given number is prime. Otherwise answer 'no'.\n");
+    line("Answer \"yes\" if given number is prime. Otherwise answer \"no\".");
 
     checkUserInput($name);
 }
@@ -44,13 +43,11 @@ function checkUserInput(string $name): void
     $countCorrecctAnswers = 0;
     
     while ($countCorrecctAnswers < 3) {
-        $number = rand(0, 100);
+        $number = rand(0, 10);
         $result = isPrime($number);
 
-        $guess = prompt("Question: $number");
-        $guess = trim(strtolower($guess));
-
-        line("Your answer: $guess");
+        line("Question: $number");
+        $guess = prompt("Your answer");
 
         if ($result === true) {
             if ($guess === "yes") {
@@ -59,6 +56,8 @@ function checkUserInput(string $name): void
             } else {
                 $countCorrecctAnswers = 0;
                 line("'no' is wrong answer ;(. Correct answer was 'yes'.");
+                line("Let's try again, %s!", $name);
+                break;
             }
         } else {
             if ($guess === "no") {
@@ -67,11 +66,15 @@ function checkUserInput(string $name): void
             } else {
                 $countCorrecctAnswers = 0;
                 line("'yes' is wrong answer ;(. Correct answer was 'no'.");
+                line("Let's try again, %s!", $name);
+                break;
             }
         }
     }
     
-    line("Congratulations, %s!", $name);
+    if ($countCorrecctAnswers === 3) {
+        line("Congratulations, %s!", $name);
+    }
 }
 
  /**
