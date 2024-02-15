@@ -44,7 +44,8 @@ function checkUserInput(string $name): void
 
     while ($countCorrecctAnswers < 3) {
         $randomNumber = rand(0, 100);
-        $answer = trim(strtolower(prompt("Question: $randomNumber")));
+        line("Question: $randomNumber");
+        $answer = prompt("Your answer");
 
         if ($answer !== "yes" && $answer !== "no") {
             $countCorrecctAnswers = 0;
@@ -52,8 +53,6 @@ function checkUserInput(string $name): void
         }
                 
         $isEven = $randomNumber % 2 === 0;
-
-        line("Your answer: $answer");
     
         if ($isEven) {
             if ($answer === "yes") {
