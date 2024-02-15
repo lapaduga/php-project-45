@@ -62,6 +62,7 @@ function checkUserInput(string $name): void
                 $countCorrecctAnswers = 0;
                 line("'no' is wrong answer ;(. Correct answer was 'yes'.");
                 line("Let's try again, %s!", $name);
+                break;
             }
         } else {
             if ($answer === "no") {
@@ -71,9 +72,12 @@ function checkUserInput(string $name): void
                 $countCorrecctAnswers = 0;
                 line("'yes' is wrong answer ;(. Correct answer was 'no'.");
                 line("Let's try again, %s!", $name);
+                break;
             }
         }
     }
 
-    line("Congratulations, %s!", $name);
+    if ($countCorrecctAnswers === 3) {
+        line("Congratulations, %s!", $name);
+    }
 }
