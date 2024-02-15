@@ -17,7 +17,7 @@ use function cli\line;
 use function cli\prompt;
 
  /**
-  * Start BrainPrime game 
+  * Start BrainPrime game
   *
   * @return void
   **/
@@ -32,7 +32,7 @@ function startBrainPrime()
 }
 
  /**
-  * Check if user input defines number properly 
+  * Check if user input defines number properly
   *
   * @param string $name user name
   *
@@ -41,7 +41,7 @@ function startBrainPrime()
 function checkUserInput(string $name): void
 {
     $countCorrecctAnswers = 0;
-    
+
     while ($countCorrecctAnswers < 3) {
         $number = rand(0, 10);
         $result = isPrime($number);
@@ -71,7 +71,7 @@ function checkUserInput(string $name): void
             }
         }
     }
-    
+
     if ($countCorrecctAnswers === 3) {
         line("Congratulations, %s!", $name);
     }
@@ -86,27 +86,27 @@ function checkUserInput(string $name): void
   **/
 function isPrime($number)
 {
-    if ($number==2) {
+    if ($number == 2) {
         return true;
     }
 
-    if ($number==1) {
+    if ($number == 1) {
         return false;
     }
 
-    if ($number%2==0) {
+    if ($number % 2 == 0) {
         return false;
     }
 
-    $i=3;
+    $i = 3;
     $max_factor = (int)sqrt($number);
 
-    while ($i<=$max_factor) {
-        if ($number%$i == 0) {
+    while ($i <= $max_factor) {
+        if ($number % $i == 0) {
             return false;
         }
 
-        $i+=2;
+        $i += 2;
     }
 
     return true;
