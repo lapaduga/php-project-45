@@ -52,6 +52,8 @@ function checkUserInput(string $name): void
         }
                 
         $isEven = $randomNumber % 2 === 0;
+
+				line("Your answer: $answer");
     
         if ($isEven) {
             if ($answer === "yes") {
