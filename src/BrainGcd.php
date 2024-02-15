@@ -44,19 +44,17 @@ function checkUserInput(string $name): void
     $countCorrecctAnswers = 0;
     
     while ($countCorrecctAnswers < 3) {
-        $randomNumber1 = rand(0, 100);
-        $randomNumber2 = rand(0, 100);
+        $randomNumber1 = rand(0, 10);
+        $randomNumber2 = rand(0, 10);
         $result = gcd($randomNumber1, $randomNumber2);
 
-        $answer = prompt("Question: $randomNumber1 $randomNumber2");
-        $answer = trim(strtolower($answer));
+        line("Question: $randomNumber1 $randomNumber2");
+        $answer = prompt("Your answer");
     
         if ($answer === "") {
             $countCorrecctAnswers = 0;
             line("Your answer can't be an empty string!");
         }
-
-        line("Your answer: $answer");
 
         if ($answer == $result) {
             $countCorrecctAnswers++;
@@ -64,10 +62,14 @@ function checkUserInput(string $name): void
         } else {
             $countCorrecctAnswers = 0;
             line("$answer is wrong answer ;(. Correct answer was $result.");
+            line("Let's try again, %s!", $name);
+            break;
         }
     }
     
-    line("Congratulations, %s!", $name);
+    if ($countCorrecctAnswers === 3) {
+        line("Congratulations, %s!", $name);
+    }
 }
 
  /**
