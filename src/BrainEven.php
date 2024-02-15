@@ -27,7 +27,7 @@ function startBrainEvenGame()
     $name = prompt('May I have your name?');
     line("Hello, %s!", $name);
 
-    line("Answer 'yes' if the number is even, otherwise answer 'no'.\n");
+    line("Answer \"yes\" if the number is even, otherwise answer \"no\".\n");
 
     checkUserInput($name);
 }
