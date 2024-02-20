@@ -11,11 +11,11 @@
 	"autoload": {
 		"files": [
 			"src/Cli.php",
-			"src/BrainPrime.php",
-			"src/BrainProgression.php",
-			"src/BrainGcd.php",
-			"src/BrainCalc.php",
-			"src/BrainEven.php"
+			"src/Games/BrainPrime.php",
+			"src/Games/BrainProgression.php",
+			"src/Games/BrainGcd.php",
+			"src/Games/BrainCalc.php",
+			"src/Games/BrainEven.php"
 		]
 	},
 	"authors": [

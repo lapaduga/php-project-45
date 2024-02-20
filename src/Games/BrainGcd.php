@@ -1,26 +1,10 @@
 <?php
 
-/**
- * Calculate the GCD game
- * PHP version 8.1.2-1ubuntu2.14
- *
- * @category BrainGcd
- * @package  BrainGcd
- * @author   lapaduga <deniskotov29042015@gmail.com>
- * @license  https://opensource.org/licenses/MIT MIT License
- * @link     https://github.com/lapaduga
- */
-
-namespace BrainGames\BrainGcd;
+namespace BrainGames\Games\BrainGcd;
 
 use function cli\line;
 use function cli\prompt;
 
- /**
-  * Start BrainGcd game
-  *
-  * @return void
-  **/
 function startBrainGcd()
 {
     line("Welcome to the Brain Games!\n");
@@ -40,21 +24,19 @@ function startBrainGcd()
   **/
 function checkUserInput(string $name): void
 {
+    define("MINIMUM_RND_NUMBER", 0);
+    define("MAXIMUM_RND_NUMBER", 10);
     $countCorrecctAnswers = 0;
-
     while ($countCorrecctAnswers < 3) {
-        $randomNumber1 = rand(0, 10);
-        $randomNumber2 = rand(0, 10);
+        $randomNumber1 = rand(MINIMUM_RND_NUMBER, MAXIMUM_RND_NUMBER);
+        $randomNumber2 = rand(MINIMUM_RND_NUMBER, MAXIMUM_RND_NUMBER);
         $result = gcd($randomNumber1, $randomNumber2);
-
         line("Question: $randomNumber1 $randomNumber2");
         $answer = prompt("Your answer");
-
         if ($answer === "") {
             $countCorrecctAnswers = 0;
             line("Your answer can't be an empty string!");
         }
-
         if ($answer == $result) {
             $countCorrecctAnswers++;
             line("Correct!");
@@ -65,37 +47,24 @@ function checkUserInput(string $name): void
             break;
         }
     }
-
     if ($countCorrecctAnswers === 3) {
         line("Congratulations, %s!", $name);
     }
 }
 
- /**
-  * Finds the greatest common divisor
-  *
-  * @param int $a first number
-  * @param int $b second number
-  *
-  * @return int
-  **/
 function gcd($a, $b)
 {
     if ($a === 0) {
         return $b;
     }
-
     if ($b === 0) {
         return $a;
     }
-
     if ($a === $b) {
-        return $a ;
+        return $a;
     }
-
     if ($a > $b) {
         return gcd($a - $b, $b);
     }
-
     return gcd($a, $b - $a);
 }

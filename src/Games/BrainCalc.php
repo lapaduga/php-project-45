@@ -1,26 +1,10 @@
 <?php
 
-/**
- * Calculate the numbers game
- * PHP version 8.1.2-1ubuntu2.14
- *
- * @category BrainCalc
- * @package  BrainCalc
- * @author   lapaduga <deniskotov29042015@gmail.com>
- * @license  https://opensource.org/licenses/MIT MIT License
- * @link     https://github.com/lapaduga
- */
-
-namespace BrainGames\BrainCalc;
+namespace BrainGames\Games\BrainCalc;
 
 use function cli\line;
 use function cli\prompt;
 
- /**
-  * Start BrainCalc game
-  *
-  * @return void
-  **/
 function startBrainCalc()
 {
     line("Welcome to the Brain Games!");
@@ -31,22 +15,17 @@ function startBrainCalc()
     checkUserInput($name);
 }
 
- /**
-  * Check if user input defines number properly
-  *
-  * @param string $name user name
-  *
-  * @return void
-  **/
 function checkUserInput(string $name): void
 {
+    define("MINIMUM_RND_NUMBER", 0);
+    define("MAXIMUM_RND_NUMBER", 10);
     $countCorrecctAnswers = 0;
     $operations = ["+", "-", "*"];
 
     while ($countCorrecctAnswers < 3) {
-        $randomNumber1 = rand(0, 10);
-        $randomNumber2 = rand(0, 10);
-        $randomOperation = $operations[rand(0, 2)];
+        $randomNumber1 = rand(MINIMUM_RND_NUMBER, MAXIMUM_RND_NUMBER);
+        $randomNumber2 = rand(MINIMUM_RND_NUMBER, MAXIMUM_RND_NUMBER);
+        $randomOperation = $operations[rand(0, (count($operations) - 1))];
         $result = null;
 
         if ($randomOperation === '+') {

@@ -1,26 +1,10 @@
 <?php
 
-/**
- * Guess the prime number game
- * PHP version 8.1.2-1ubuntu2.14
- *
- * @category BrainPrime
- * @package  BrainPrime
- * @author   lapaduga <deniskotov29042015@gmail.com>
- * @license  https://opensource.org/licenses/MIT MIT License
- * @link     https://github.com/lapaduga
- */
-
-namespace BrainGames\BrainPrime;
+namespace BrainGames\Games\BrainPrime;
 
 use function cli\line;
 use function cli\prompt;
 
- /**
-  * Start BrainPrime game
-  *
-  * @return void
-  **/
 function startBrainPrime()
 {
     line("Welcome to the Brain Games!");
@@ -31,19 +15,13 @@ function startBrainPrime()
     checkUserInput($name);
 }
 
- /**
-  * Check if user input defines number properly
-  *
-  * @param string $name user name
-  *
-  * @return void
-  **/
 function checkUserInput(string $name): void
 {
+    define("MINIMUM_RND_NUMBER", 0);
+    define("MAXIMUM_RND_NUMBER", 10);
     $countCorrecctAnswers = 0;
-
     while ($countCorrecctAnswers < 3) {
-        $number = rand(0, 10);
+        $number = rand(MINIMUM_RND_NUMBER, MAXIMUM_RND_NUMBER);
         $result = isPrime($number);
 
         line("Question: $number");
@@ -77,13 +55,6 @@ function checkUserInput(string $name): void
     }
 }
 
- /**
-  * Checks if number is prime
-  *
-  * @param int $number number to check
-  *
-  * @return bool
-  **/
 function isPrime($number)
 {
     if ($number == 2) {

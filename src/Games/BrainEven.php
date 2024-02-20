@@ -1,17 +1,6 @@
 <?php
 
-/**
- * Guess if the number is even game
- * PHP version 8.1.2-1ubuntu2.14
- *
- * @category BrainEven
- * @package  BrainEven
- * @author   lapaduga <deniskotov29042015@gmail.com>
- * @license  https://opensource.org/licenses/MIT MIT License
- * @link     https://github.com/lapaduga
- */
-
-namespace BrainGames\BrainEven;
+namespace BrainGames\Games\BrainEven;
 
 use function cli\line;
 use function cli\prompt;
@@ -28,9 +17,11 @@ function startBrainEvenGame()
 
 function checkUserInput(string $name): void
 {
+    define("MINIMUM_RND_NUMBER", 0);
+    define("MAXIMUM_RND_NUMBER", 100);
     $countCorrecctAnswers = 0;
     while ($countCorrecctAnswers < 3) {
-        $randomNumber = rand(0, 100);
+        $randomNumber = rand(MINIMUM_RND_NUMBER, MAXIMUM_RND_NUMBER);
         line("Question: $randomNumber");
         $answer = prompt("Your answer");
         if ($answer !== "yes" && $answer !== "no") {
