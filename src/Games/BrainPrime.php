@@ -55,7 +55,7 @@ function checkUserInput(string $name): void
     }
 }
 
-function isPrime($number)
+function isPrime(int $number)
 {
     if ($number == 2) {
         return true;

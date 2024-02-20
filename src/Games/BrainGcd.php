@@ -52,7 +52,7 @@ function checkUserInput(string $name): void
     }
 }
 
-function gcd($a, $b)
+function gcd(int $a, int $b)
 {
     if ($a === 0) {
         return $b;
