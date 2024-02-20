@@ -26,7 +26,7 @@ validate:
 	composer validate
 
 lint:
-	composer exec --verbose phpcs -- --standard=PSR12 src bin
+	composer exec --verbose phpcbf -- --standard=PSR12 src bin
 
 rec-cast:
 	asciinema rec demo.cast --append

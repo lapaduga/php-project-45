@@ -16,11 +16,6 @@ namespace BrainGames\BrainEven;
 use function cli\line;
 use function cli\prompt;
 
- /**
-  * Start BrainEven game
-  *
-  * @return void
-  **/
 function startBrainEvenGame()
 {
     line("Welcome to the Brain Games!");
@@ -31,29 +26,18 @@ function startBrainEvenGame()
     checkUserInput($name);
 }
 
- /**
-  * Check if user input defines number properly
-  *
-  * @param string $name user name
-  *
-  * @return void
-  **/
 function checkUserInput(string $name): void
 {
     $countCorrecctAnswers = 0;
-
     while ($countCorrecctAnswers < 3) {
         $randomNumber = rand(0, 100);
         line("Question: $randomNumber");
         $answer = prompt("Your answer");
-
         if ($answer !== "yes" && $answer !== "no") {
             $countCorrecctAnswers = 0;
             line("Your answer can be only 'yes' or 'no' in any case!");
         }
-
         $isEven = $randomNumber % 2 === 0;
-
         if ($isEven) {
             if ($answer === "yes") {
                 $countCorrecctAnswers++;
@@ -76,7 +60,6 @@ function checkUserInput(string $name): void
             }
         }
     }
-
     if ($countCorrecctAnswers === 3) {
         line("Congratulations, %s!", $name);
     }
