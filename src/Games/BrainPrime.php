@@ -5,6 +5,9 @@ namespace BrainGames\Games\BrainPrime;
 use function cli\line;
 use function cli\prompt;
 
+define("MINIMUM_RND_NUMBER", 0);
+define("MAXIMUM_RND_NUMBER", 10);
+
 function startBrainPrime()
 {
     line("Welcome to the Brain Games!");
@@ -17,8 +20,6 @@ function startBrainPrime()
 
 function checkUserInput(string $name): void
 {
-    define("MINIMUM_RND_NUMBER", 0);
-    define("MAXIMUM_RND_NUMBER", 10);
     $countCorrecctAnswers = 0;
     while ($countCorrecctAnswers < 3) {
         $number = rand(MINIMUM_RND_NUMBER, MAXIMUM_RND_NUMBER);

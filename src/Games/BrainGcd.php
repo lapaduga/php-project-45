@@ -5,6 +5,9 @@ namespace BrainGames\Games\BrainGcd;
 use function cli\line;
 use function cli\prompt;
 
+define("MINIMUM_RND_NUMBER", 0);
+define("MAXIMUM_RND_NUMBER", 10);
+
 function startBrainGcd()
 {
     line("Welcome to the Brain Games!\n");
@@ -15,17 +18,8 @@ function startBrainGcd()
     checkUserInput($name);
 }
 
- /**
-  * Check if user input defines number properly
-  *
-  * @param string $name user name
-  *
-  * @return void
-  **/
 function checkUserInput(string $name): void
 {
-    define("MINIMUM_RND_NUMBER", 0);
-    define("MAXIMUM_RND_NUMBER", 10);
     $countCorrecctAnswers = 0;
     while ($countCorrecctAnswers < 3) {
         $randomNumber1 = rand(MINIMUM_RND_NUMBER, MAXIMUM_RND_NUMBER);
@@ -54,17 +48,5 @@ function checkUserInput(string $name): void
 
 function gcd(int $a, int $b)
 {
-    if ($a === 0) {
-        return $b;
-    }
-    if ($b === 0) {
-        return $a;
-    }
-    if ($a === $b) {
-        return $a;
-    }
-    if ($a > $b) {
-        return gcd($a - $b, $b);
-    }
-    return gcd($a, $b - $a);
+    return $b ? gcd($b, $a % $b) : $a;
 }

@@ -5,6 +5,9 @@ namespace BrainGames\Games\BrainEven;
 use function cli\line;
 use function cli\prompt;
 
+define("MINIMUM_RND_NUMBER", 0);
+define("MAXIMUM_RND_NUMBER", 100);
+
 function startBrainEvenGame()
 {
     line("Welcome to the Brain Games!");
@@ -17,8 +20,6 @@ function startBrainEvenGame()
 
 function checkUserInput(string $name): void
 {
-    define("MINIMUM_RND_NUMBER", 0);
-    define("MAXIMUM_RND_NUMBER", 100);
     $countCorrecctAnswers = 0;
     while ($countCorrecctAnswers < 3) {
         $randomNumber = rand(MINIMUM_RND_NUMBER, MAXIMUM_RND_NUMBER);
