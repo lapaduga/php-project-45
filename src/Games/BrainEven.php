@@ -20,39 +20,39 @@ function startBrainEvenGame()
 
 function checkUserInput(string $name): void
 {
-    $countCorrecctAnswers = 0;
-    while ($countCorrecctAnswers < 3) {
+    $countCorrectAnswers = 0;
+    while ($countCorrectAnswers < 3) {
         $randomNumber = rand(MINIMUM_RND_NUMBER, MAXIMUM_RND_NUMBER);
         line("Question: $randomNumber");
         $answer = prompt("Your answer");
         if ($answer !== "yes" && $answer !== "no") {
-            $countCorrecctAnswers = 0;
+            $countCorrectAnswers = 0;
             line("Your answer can be only 'yes' or 'no' in any case!");
         }
         $isEven = $randomNumber % 2 === 0;
         if ($isEven) {
             if ($answer === "yes") {
-                $countCorrecctAnswers++;
+                $countCorrectAnswers++;
                 line('Correct!');
             } else {
-                $countCorrecctAnswers = 0;
+                $countCorrectAnswers = 0;
                 line("'no' is wrong answer ;(. Correct answer was 'yes'.");
                 line("Let's try again, %s!", $name);
                 break;
             }
         } else {
             if ($answer === "no") {
-                $countCorrecctAnswers++;
+                $countCorrectAnswers++;
                 line('Correct!');
             } else {
-                $countCorrecctAnswers = 0;
+                $countCorrectAnswers = 0;
                 line("'yes' is wrong answer ;(. Correct answer was 'no'.");
                 line("Let's try again, %s!", $name);
                 break;
             }
         }
     }
-    if ($countCorrecctAnswers === 3) {
+    if ($countCorrectAnswers === 3) {
         line("Congratulations, %s!", $name);
     }
 }

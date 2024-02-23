@@ -1,36 +1,28 @@
 <?php
 
-/**
- * Starting a game
- * PHP version 8.1.2-1ubuntu2.14
- *
- * @category StartGame
- * @package  StartGame
- * @author   lapaduga <deniskotov29042015@gmail.com>
- * @license  https://opensource.org/licenses/MIT MIT License
- * @link     https://github.com/lapaduga
- */
-
 namespace BrainGames\Engine;
 
 use function cli\line;
 use function cli\prompt;
 
- /**
-  * Start BrainCalc game
-  *
-  * @param string   $string   Specific text for a specific game
-  * @param callable $callback Specific callback for a specific game
-  *
-  * @return void
-  **/
-function startGame($string, $callback)
+const COUNT_CORRECT_ANSWERS = 3;
+const MINIMUM_RND_NUMBER = 0;
+const MAXIMUM_RND_NUMBER = 10;
+
+$callback = function () {
+    line("Start callback");
+    line(MINIMUM_RND_NUMBER);
+    line(MAXIMUM_RND_NUMBER);
+}
+
+function startGame($string, $cb)
 {
-    line("Welcome to the Brain Games!\n");
+    line("Welcome to the Brain Games!");
     $name = prompt('May I have your name?');
     line("Hello, %s!", $name);
-
-    line("$string\n");
-
-    $callback($name);
+    line($string);
+ 
+    $cb($name, MINIMUM_RND_NUMBER, MAXIMUM_RND_NUMBER);
 }
+
+startGame("StartGame function started", $callback);

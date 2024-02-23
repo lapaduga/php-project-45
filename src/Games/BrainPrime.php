@@ -20,8 +20,8 @@ function startBrainPrime()
 
 function checkUserInput(string $name): void
 {
-    $countCorrecctAnswers = 0;
-    while ($countCorrecctAnswers < 3) {
+    $countCorrectAnswers = 0;
+    while ($countCorrectAnswers < 3) {
         $number = rand(MINIMUM_RND_NUMBER, MAXIMUM_RND_NUMBER);
         $result = isPrime($number);
 
@@ -30,20 +30,20 @@ function checkUserInput(string $name): void
 
         if ($result === true) {
             if ($guess === "yes") {
-                $countCorrecctAnswers++;
+                $countCorrectAnswers++;
                 line("Correct!");
             } else {
-                $countCorrecctAnswers = 0;
+                $countCorrectAnswers = 0;
                 line("'no' is wrong answer ;(. Correct answer was 'yes'.");
                 line("Let's try again, %s!", $name);
                 break;
             }
         } else {
             if ($guess === "no") {
-                $countCorrecctAnswers++;
+                $countCorrectAnswers++;
                 line("Correct!");
             } else {
-                $countCorrecctAnswers = 0;
+                $countCorrectAnswers = 0;
                 line("'yes' is wrong answer ;(. Correct answer was 'no'.");
                 line("Let's try again, %s!", $name);
                 break;
@@ -51,7 +51,7 @@ function checkUserInput(string $name): void
         }
     }
 
-    if ($countCorrecctAnswers === 3) {
+    if ($countCorrectAnswers === 3) {
         line("Congratulations, %s!", $name);
     }
 }

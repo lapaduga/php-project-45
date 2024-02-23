@@ -20,28 +20,28 @@ function startBrainGcd()
 
 function checkUserInput(string $name): void
 {
-    $countCorrecctAnswers = 0;
-    while ($countCorrecctAnswers < 3) {
+    $countCorrectAnswers = 0;
+    while ($countCorrectAnswers < 3) {
         $randomNumber1 = rand(MINIMUM_RND_NUMBER, MAXIMUM_RND_NUMBER);
         $randomNumber2 = rand(MINIMUM_RND_NUMBER, MAXIMUM_RND_NUMBER);
         $result = gcd($randomNumber1, $randomNumber2);
         line("Question: $randomNumber1 $randomNumber2");
         $answer = prompt("Your answer");
         if ($answer === "") {
-            $countCorrecctAnswers = 0;
+            $countCorrectAnswers = 0;
             line("Your answer can't be an empty string!");
         }
         if ($answer == $result) {
-            $countCorrecctAnswers++;
+            $countCorrectAnswers++;
             line("Correct!");
         } else {
-            $countCorrecctAnswers = 0;
+            $countCorrectAnswers = 0;
             line("$answer is wrong answer ;(. Correct answer was $result.");
             line("Let's try again, %s!", $name);
             break;
         }
     }
-    if ($countCorrecctAnswers === 3) {
+    if ($countCorrectAnswers === 3) {
         line("Congratulations, %s!", $name);
     }
 }

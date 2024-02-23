@@ -5,9 +5,6 @@ namespace BrainGames\Games\BrainCalc;
 use function cli\line;
 use function cli\prompt;
 
-define("MINIMUM_RND_NUMBER", 0);
-define("MAXIMUM_RND_NUMBER", 10);
-
 function startBrainCalc()
 {
     line("Welcome to the Brain Games!");
@@ -20,12 +17,12 @@ function startBrainCalc()
 
 function checkUserInput(string $name): void
 {
-    $countCorrecctAnswers = 0;
+    $countCorrectAnswers = 0;
     $operations = ["+", "-", "*"];
 
-    while ($countCorrecctAnswers < 3) {
-        $randomNumber1 = rand(MINIMUM_RND_NUMBER, MAXIMUM_RND_NUMBER);
-        $randomNumber2 = rand(MINIMUM_RND_NUMBER, MAXIMUM_RND_NUMBER);
+    while ($countCorrectAnswers < 3) {
+        $randomNumber1 = rand(0, 10);
+        $randomNumber2 = rand(0, 10);
         $randomOperation = $operations[rand(0, (count($operations) - 1))];
         $result = null;
 
@@ -41,22 +38,22 @@ function checkUserInput(string $name): void
         $answer = prompt("Your answer");
 
         if ($answer === "") {
-            $countCorrecctAnswers = 0;
+            $countCorrectAnswers = 0;
             line("Your answer can't be an empty string!");
         }
 
         if ((int)$answer === $result) {
-            $countCorrecctAnswers++;
+            $countCorrectAnswers++;
             line("Correct!");
         } else {
-            $countCorrecctAnswers = 0;
+            $countCorrectAnswers = 0;
             line("$answer is wrong answer ;(. Correct answer was $result.");
             line("Let's try again, %s!", $name);
             break;
         }
     }
 
-    if ($countCorrecctAnswers === 3) {
+    if ($countCorrectAnswers === 3) {
         line("Congratulations, %s!", $name);
     }
 }

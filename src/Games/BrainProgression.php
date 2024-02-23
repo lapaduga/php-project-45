@@ -17,8 +17,8 @@ function startBrainProgression()
 
 function checkUserInput(string $name): void
 {
-    $countCorrecctAnswers = 0;
-    while ($countCorrecctAnswers < 3) {
+    $countCorrectAnswers = 0;
+    while ($countCorrectAnswers < 3) {
         $arrayLength = 10;
         $hiddenPosition = rand(0, $arrayLength - 1);
         $step = rand(2, 6);
@@ -33,16 +33,16 @@ function checkUserInput(string $name): void
         line("Question: $stringArray");
         $guess = prompt("Your answer");
         if ($guess == $hiddenNumber) {
-            $countCorrecctAnswers++;
+            $countCorrectAnswers++;
             line("Correct!");
         } else {
-            $countCorrecctAnswers = 0;
+            $countCorrectAnswers = 0;
             line("$guess is wrong answer ;(. Correct answer was $hiddenNumber.");
             line("Let's try again, %s!", $name);
             break;
         }
     }
-    if ($countCorrecctAnswers === 3) {
+    if ($countCorrectAnswers === 3) {
         line("Congratulations, %s!", $name);
     }
 }
