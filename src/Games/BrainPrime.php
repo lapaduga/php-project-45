@@ -8,30 +8,30 @@ use function BrainGames\Engine\startGame;
 
 function startBrainPrime()
 {
-	$question = 'Answer "yes" if given number is prime. Otherwise answer "no".';
+    $question = 'Answer "yes" if given number is prime. Otherwise answer "no".';
 
-	$callback = function () {
-		$number = rand(MINIMUM_RND_NUMBER, MAXIMUM_RND_NUMBER);
-		$result = isPrime($number);
-		line("Question: $number");
-		$guess = prompt("Your answer");
+    $callback = function () {
+        $number = rand(MINIMUM_RND_NUMBER, MAXIMUM_RND_NUMBER);
+        $result = isPrime($number);
+        line("Question: $number");
+        $guess = prompt("Your answer");
 
-		if ($result === true) {
-				if ($guess === "yes") {
-					return true;
-				} else {
-					return [$guess, "yes"];
-				}
-		} else {
-				if ($guess === "no") {
-					return true;
-				} else {
-					return [$guess, "no"];
-				}
-		}
-	};
+        if ($result === true) {
+            if ($guess === "yes") {
+                return true;
+            } else {
+                return [$guess, "yes"];
+            }
+        } else {
+            if ($guess === "no") {
+                return true;
+            } else {
+                return [$guess, "no"];
+            }
+        }
+    };
 
-	startGame($callback, $question);
+    startGame($callback, $question);
 }
 
 function isPrime(int $number)
