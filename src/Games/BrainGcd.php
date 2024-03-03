@@ -27,7 +27,7 @@ function startBrainGcd()
     startGame($callback, $question);
 }
 
-function gcd($a, $b)
+function gcd(int $a, int $b): int
 {
     if ($a === 0) {
         return $b;
