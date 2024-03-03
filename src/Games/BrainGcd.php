@@ -27,7 +27,19 @@ function startBrainGcd()
     startGame($callback, $question);
 }
 
-function gcd(int $a, int $b)
+function gcd($a, $b)
 {
-    return $b ? gcd($b, $a % $b) : $a;
+    if ($a === 0) {
+        return $b;
+    }
+
+    if ($b === 0) {
+        return $a;
+    }
+
+    if ($a > $b) {
+        return gcd($a - $b, $b);
+    }
+
+    return gcd($a, $b - $a);
 }

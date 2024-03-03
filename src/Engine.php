@@ -9,7 +9,7 @@ define("COUNT_CORRECT_ANSWERS", 3);
 define("MINIMUM_RND_NUMBER", 0);
 define("MAXIMUM_RND_NUMBER", 10);
 
-function startGame($cb, $question)
+function startGame(callable $cb, string $question): void
 {
     line("Welcome to the Brain Games!");
     $name = prompt('May I have your name?');
