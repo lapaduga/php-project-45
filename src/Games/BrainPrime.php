@@ -4,56 +4,34 @@ namespace BrainGames\Games\BrainPrime;
 
 use function cli\line;
 use function cli\prompt;
-
-define("MINIMUM_RND_NUMBER", 0);
-define("MAXIMUM_RND_NUMBER", 10);
+use function BrainGames\Engine\startGame;
 
 function startBrainPrime()
 {
-    line("Welcome to the Brain Games!");
-    $name = prompt('May I have your name?');
-    line("Hello, %s!", $name);
-    line("Answer \"yes\" if given number is prime. Otherwise answer \"no\".");
+	$question = 'Answer "yes" if given number is prime. Otherwise answer "no".';
 
-    checkUserInput($name);
-}
+	$callback = function () {
+		$number = rand(MINIMUM_RND_NUMBER, MAXIMUM_RND_NUMBER);
+		$result = isPrime($number);
+		line("Question: $number");
+		$guess = prompt("Your answer");
 
-function checkUserInput(string $name): void
-{
-    $countCorrectAnswers = 0;
-    while ($countCorrectAnswers < 3) {
-        $number = rand(MINIMUM_RND_NUMBER, MAXIMUM_RND_NUMBER);
-        $result = isPrime($number);
+		if ($result === true) {
+				if ($guess === "yes") {
+					return true;
+				} else {
+					return [$guess, "yes"];
+				}
+		} else {
+				if ($guess === "no") {
+					return true;
+				} else {
+					return [$guess, "no"];
+				}
+		}
+	};
 
-        line("Question: $number");
-        $guess = prompt("Your answer");
-
-        if ($result === true) {
-            if ($guess === "yes") {
-                $countCorrectAnswers++;
-                line("Correct!");
-            } else {
-                $countCorrectAnswers = 0;
-                line("'no' is wrong answer ;(. Correct answer was 'yes'.");
-                line("Let's try again, %s!", $name);
-                break;
-            }
-        } else {
-            if ($guess === "no") {
-                $countCorrectAnswers++;
-                line("Correct!");
-            } else {
-                $countCorrectAnswers = 0;
-                line("'yes' is wrong answer ;(. Correct answer was 'no'.");
-                line("Let's try again, %s!", $name);
-                break;
-            }
-        }
-    }
-
-    if ($countCorrectAnswers === 3) {
-        line("Congratulations, %s!", $name);
-    }
+	startGame($callback, $question);
 }
 
 function isPrime(int $number)

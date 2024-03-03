@@ -4,56 +4,36 @@ namespace BrainGames\Games\BrainCalc;
 
 use function cli\line;
 use function cli\prompt;
+use function BrainGames\Engine\startGame;
 
 function startBrainCalc()
 {
-    line("Welcome to the Brain Games!");
-    $name = prompt('May I have your name?');
-    line("Hello, %s!", $name);
-    line("What is the result of the expression?");
+	$question = "What is the result of the expression?";
 
-    checkUserInput($name);
-}
+	$callback = function () {
+		$operations = ["+", "-", "*"];
+		$randomNumber1 = rand(MINIMUM_RND_NUMBER, MAXIMUM_RND_NUMBER);
+		$randomNumber2 = rand(MINIMUM_RND_NUMBER, MAXIMUM_RND_NUMBER);
+		$randomOperation = $operations[rand(MINIMUM_RND_NUMBER, count($operations) - 1)];
+		$result = null;
 
-function checkUserInput(string $name): void
-{
-    $countCorrectAnswers = 0;
-    $operations = ["+", "-", "*"];
+		if ($randomOperation === '+') {
+				$result = $randomNumber1 + $randomNumber2;
+		} elseif ($randomOperation === '-') {
+				$result = $randomNumber1 - $randomNumber2;
+		} elseif ($randomOperation === '*') {
+				$result = $randomNumber1 * $randomNumber2;
+		}
 
-    while ($countCorrectAnswers < 3) {
-        $randomNumber1 = rand(0, 10);
-        $randomNumber2 = rand(0, 10);
-        $randomOperation = $operations[rand(0, (count($operations) - 1))];
-        $result = null;
+		line("Question: $randomNumber1 $randomOperation $randomNumber2");
+    $answer = prompt("Your answer");
 
-        if ($randomOperation === '+') {
-            $result = $randomNumber1 + $randomNumber2;
-        } elseif ($randomOperation === '-') {
-            $result = $randomNumber1 - $randomNumber2;
-        } elseif ($randomOperation === '*') {
-            $result = $randomNumber1 * $randomNumber2;
-        }
+		if ((int)$answer === $result) {
+				return true;
+		} else {
+				return [$answer, $result];
+		}
+	};
 
-        line("Question: $randomNumber1 $randomOperation $randomNumber2");
-        $answer = prompt("Your answer");
-
-        if ($answer === "") {
-            $countCorrectAnswers = 0;
-            line("Your answer can't be an empty string!");
-        }
-
-        if ((int)$answer === $result) {
-            $countCorrectAnswers++;
-            line("Correct!");
-        } else {
-            $countCorrectAnswers = 0;
-            line("$answer is wrong answer ;(. Correct answer was $result.");
-            line("Let's try again, %s!", $name);
-            break;
-        }
-    }
-
-    if ($countCorrectAnswers === 3) {
-        line("Congratulations, %s!", $name);
-    }
+	startGame($callback, $question);
 }

@@ -4,55 +4,32 @@ namespace BrainGames\Games\BrainEven;
 
 use function cli\line;
 use function cli\prompt;
-
-define("MINIMUM_RND_NUMBER", 0);
-define("MAXIMUM_RND_NUMBER", 100);
+use function BrainGames\Engine\startGame;
 
 function startBrainEvenGame()
 {
-    line("Welcome to the Brain Games!");
-    $name = prompt('May I have your name?');
-    line("Hello, %s!", $name);
-    line("Answer \"yes\" if the number is even, otherwise answer \"no\".");
+	$question = 'Answer "yes" if the number is even, otherwise answer "no".';
 
-    checkUserInput($name);
-}
+	$callback = function () {
+		$randomNumber = rand(MINIMUM_RND_NUMBER, MAXIMUM_RND_NUMBER);
+		line("Question: $randomNumber");
+		$answer = prompt("Your answer");
+		$isEven = $randomNumber % 2 === 0;
 
-function checkUserInput(string $name): void
-{
-    $countCorrectAnswers = 0;
-    while ($countCorrectAnswers < 3) {
-        $randomNumber = rand(MINIMUM_RND_NUMBER, MAXIMUM_RND_NUMBER);
-        line("Question: $randomNumber");
-        $answer = prompt("Your answer");
-        if ($answer !== "yes" && $answer !== "no") {
-            $countCorrectAnswers = 0;
-            line("Your answer can be only 'yes' or 'no' in any case!");
-        }
-        $isEven = $randomNumber % 2 === 0;
-        if ($isEven) {
-            if ($answer === "yes") {
-                $countCorrectAnswers++;
-                line('Correct!');
-            } else {
-                $countCorrectAnswers = 0;
-                line("'no' is wrong answer ;(. Correct answer was 'yes'.");
-                line("Let's try again, %s!", $name);
-                break;
-            }
-        } else {
-            if ($answer === "no") {
-                $countCorrectAnswers++;
-                line('Correct!');
-            } else {
-                $countCorrectAnswers = 0;
-                line("'yes' is wrong answer ;(. Correct answer was 'no'.");
-                line("Let's try again, %s!", $name);
-                break;
-            }
-        }
-    }
-    if ($countCorrectAnswers === 3) {
-        line("Congratulations, %s!", $name);
-    }
+		if ($isEven) {
+				if ($answer === "yes") {
+					return true;
+				} else {
+					return [$answer, "yes"];
+				}
+		} else {
+				if ($answer === "no") {
+					return true;
+				} else {
+					return [$answer, "no"];
+				}
+		}
+	};
+
+	startGame($callback, $question);
 }
