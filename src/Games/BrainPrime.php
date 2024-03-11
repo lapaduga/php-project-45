@@ -48,11 +48,7 @@ function isPrime(int $number)
         return true;
     }
 
-    if ($number == 1) {
-        return false;
-    }
-
-    if ($number % 2 == 0) {
+    if ($number == 1 || $number % 2 == 0) {
         return false;
     }
 

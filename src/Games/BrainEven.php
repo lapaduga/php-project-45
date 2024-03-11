@@ -26,22 +26,12 @@ function startBrainEvenGame()
     startGame($callback, $question);
 }
 
-function handleData(bool $isEven, string $answer): bool | array
+function handleData(bool $isEven, string $answer)
 {
-    if ($isEven && $answer === "yes") {
-        return true;
-    }
-
-    if ($isEven && $answer === "no") {
-        return [$answer, "yes"];
-    }
-
-    if (!$isEven && $answer === "no") {
-        return true;
-    }
-
-    if (!$isEven && $answer === "yes") {
-        return [$answer, "no"];
+    if ($isEven) {
+                $answer === "yes" ? true : [$answer, "yes"];
+    } else {
+                $answer === "no" ? true : [$answer, "no"];
     }
 }
 
