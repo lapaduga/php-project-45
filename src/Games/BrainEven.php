@@ -5,6 +5,7 @@ namespace BrainGames\Games\BrainEven;
 use function cli\line;
 use function cli\prompt;
 use function BrainGames\Engine\startGame;
+
 use const BrainGames\Engine\MINIMUM_RND_NUMBER;
 use const BrainGames\Engine\MAXIMUM_RND_NUMBER;
 

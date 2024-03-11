@@ -18,20 +18,20 @@ function startGame(callable $cb, string $question): void
 
     $countCorrectAnswers = 0;
 
-		for ($i = 0; $i < COUNT_CORRECT_ANSWERS; $i++) {
-			$result = $cb();
+    for ($i = 0; $i < COUNT_CORRECT_ANSWERS; $i++) {
+        $result = $cb();
 
-			if ($result === true) {
-					$countCorrectAnswers++;
-					line("Correct!");
-			} else {
-					line("\"$result[0]\" is wrong answer ;(. Correct answer was \"$result[1]\".");
-					line("Let's try again, %s!", $name);
-					break;
-			}
-		}
+        if ($result === true) {
+                $countCorrectAnswers++;
+                line("Correct!");
+        } else {
+                line("\"$result[0]\" is wrong answer ;(. Correct answer was \"$result[1]\".");
+                line("Let's try again, %s!", $name);
+                break;
+        }
+    }
 
     if ($countCorrectAnswers === 3) {
-			line("Congratulations, %s!", $name);
-		}
+            line("Congratulations, %s!", $name);
+    }
 }
