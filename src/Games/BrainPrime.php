@@ -42,7 +42,7 @@ function handleData(bool $result, string $guess): bool | array
     }
 }
 
-/* function isPrime(int $number): bool
+function isPrime(int $number): bool
 {
     if ($number == 2) {
         return true;
@@ -61,25 +61,6 @@ function handleData(bool $result, string $guess): bool | array
         }
 
         $i += 2;
-    }
-
-    return true;
-} */
-
-function isPrime(int $number): bool
-{
-    if ($number == 1) {
-        return false;
-    }
-
-    if ($number == 2) {
-        return true;
-    }
-
-    for ($i = 2; $i <= $number / 2; $i++) {
-        if ($number % $i == 0) {
-            return false;
-        }
     }
 
     return true;
