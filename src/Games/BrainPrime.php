@@ -29,16 +29,16 @@ function handleData(bool $result, string $guess): bool | array
 {
     if ($result === true) {
         if ($guess === "yes") {
-                return true;
-        } else {
-                return [$guess, "yes"];
+            return true;
         }
+
+        return [$guess, "yes"];
     } else {
         if ($guess === "no") {
-                return true;
-        } else {
-            return [$guess, "no"];
+            return true;
         }
+
+        return [$guess, "no"];
     }
 }
 
