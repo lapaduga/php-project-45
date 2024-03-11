@@ -17,22 +17,33 @@ function startBrainEvenGame()
         $randomNumber = rand(MINIMUM_RND_NUMBER, MAXIMUM_RND_NUMBER);
         line("Question: $randomNumber");
         $answer = prompt("Your answer");
-        $isEven = $randomNumber % 2 === 0;
 
-        if ($isEven) {
-            if ($answer === "yes") {
-                return true;
-            } else {
-                return [$answer, "yes"];
-            }
-        } else {
-            if ($answer === "no") {
-                return true;
-            } else {
-                return [$answer, "no"];
-            }
-        }
+        $isEven = isEven($randomNumber);
+
+        return handleData($isEven, $answer);
     };
 
     startGame($callback, $question);
+}
+
+function handleData(bool $isEven, string $answer): bool | array
+{
+    if ($isEven) {
+        if ($answer === "yes") {
+                return true;
+        } else {
+                return [$answer, "yes"];
+        }
+    } else {
+        if ($answer === "no") {
+                return true;
+        } else {
+                return [$answer, "no"];
+        }
+    }
+}
+
+function isEven(int $number): bool
+{
+    return $number % 2 === 0;
 }

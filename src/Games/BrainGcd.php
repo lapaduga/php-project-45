@@ -20,14 +20,19 @@ function startBrainGcd()
         line("Question: $randomNumber1 $randomNumber2");
         $answer = prompt("Your answer");
 
-        if ($answer == $result) {
-                return true;
-        } else {
-                return [$answer, $result];
-        }
+        return handleData($answer, $result);
     };
 
     startGame($callback, $question);
+}
+
+function handleData(string $answer, int $result): bool | array
+{
+    if ($answer == $result) {
+            return true;
+    } else {
+            return [$answer, $result];
+    }
 }
 
 function gcd(int $a, int $b): int

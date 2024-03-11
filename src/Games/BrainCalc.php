@@ -20,17 +20,7 @@ function startBrainCalc()
         $randomOperation = $operations[rand(MINIMUM_RND_NUMBER, count($operations) - 1)];
         $result = null;
 
-        switch ($randomOperation) {
-            case '+':
-                    $result = $randomNumber1 + $randomNumber2;
-                break;
-            case '-':
-                    $result = $randomNumber1 - $randomNumber2;
-                break;
-            default:
-                    $result = $randomNumber1 * $randomNumber2;
-                break;
-        }
+        $result = getResult($randomNumber1, $randomNumber2, $randomOperation);
 
         line("Question: $randomNumber1 $randomOperation $randomNumber2");
         $answer = prompt("Your answer");
@@ -43,4 +33,16 @@ function startBrainCalc()
     };
 
     startGame($callback, $question);
+}
+
+function getResult(int $number1, int $number2, string $operand): int
+{
+    switch ($operand) {
+        case '+':
+            return $number1 + $number2;
+        case '-':
+            return $number1 - $number2;
+        default:
+            return $number1 * $number2;
+    }
 }

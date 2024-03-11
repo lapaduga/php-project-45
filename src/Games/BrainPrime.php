@@ -19,22 +19,27 @@ function startBrainPrime()
         line("Question: $number");
         $guess = prompt("Your answer");
 
-        if ($result === true) {
-            if ($guess === "yes") {
-                return true;
-            } else {
-                return [$guess, "yes"];
-            }
-        } else {
-            if ($guess === "no") {
-                return true;
-            } else {
-                return [$guess, "no"];
-            }
-        }
+        return handleData($result, $guess);
     };
 
     startGame($callback, $question);
+}
+
+function handleData(bool $result, string $guess): bool | array
+{
+    if ($result === true) {
+        if ($guess === "yes") {
+                return true;
+        } else {
+                return [$guess, "yes"];
+        }
+    } else {
+        if ($guess === "no") {
+                return true;
+        } else {
+            return [$guess, "no"];
+        }
+    }
 }
 
 function isPrime(int $number)
