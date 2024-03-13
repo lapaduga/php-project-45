@@ -26,7 +26,7 @@ function startBrainEvenGame()
     startGame($callback, $question);
 }
 
-function handleData(bool $isEven, string $answer): bool | array
+function handleData(bool $isEven, string $answer)
 {
 /*     if ($isEven) {
         if ($answer === "yes") {
