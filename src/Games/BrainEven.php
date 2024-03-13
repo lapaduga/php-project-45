@@ -41,17 +41,21 @@ function handleData(bool $isEven, string $answer)
 
         return [$answer, "no"];
     } */
-    if ($isEven && $answer === "no") {
-        return [$answer, "yes"];
+    if ($isEven) {
+        return handleEvenCase($answer);
     }
 
-    if (!$isEven && $answer === "yes") {
-            return [$answer, "no"];
-    }
+    return handleNotEvenCase($answer);
+}
 
-    if (($isEven && $answer === "yes") || (!$isEven && $answer === "no")) {
-        return true;
-    }
+function handleEvenCase(string $answer)
+{
+    $answer === "yes" ? true : [$answer, "yes"];
+}
+
+function handleNotEvenCase(string $answer)
+{
+    $answer === "no" ? true : [$answer, "no"];
 }
 
 function isEven(int $number): bool
