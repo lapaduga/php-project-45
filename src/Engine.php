@@ -11,10 +11,7 @@ const MAXIMUM_RND_NUMBER = 10;
 
 function startGame(callable $cb, string $question): void
 {
-    line("Welcome to the Brain Games!");
-    $name = prompt('May I have your name?');
-    line("Hello, %s!", $name);
-    line($question);
+    $name = greet($question);
 
     $countCorrectAnswers = 0;
 
@@ -34,4 +31,14 @@ function startGame(callable $cb, string $question): void
     if ($countCorrectAnswers === 3) {
             line("Congratulations, %s!", $name);
     }
+}
+
+function greet(string $question): string
+{
+		line("Welcome to the Brain Games!");
+		$name = prompt('May I have your name?');
+		line("Hello, %s!", $name);
+		line($question);
+
+		return $name;
 }

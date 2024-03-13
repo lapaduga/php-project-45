@@ -52,14 +52,6 @@ function isPrime(int $number): bool
 {
     $result = true;
 
-/*     if ($number == 2) {
-        $result = true;
-    }
-
-    if ($number == 1 || $number % 2 == 0) {
-        $result = false;
-    } */
-
     $result = handleSimpleCases($number);
 
     $i = 3;
