@@ -28,7 +28,7 @@ function startBrainEvenGame()
 
 function handleData(bool $isEven, string $answer): bool | array
 {
-    if ($isEven) {
+/*     if ($isEven) {
         if ($answer === "yes") {
             return true;
         }
@@ -40,6 +40,17 @@ function handleData(bool $isEven, string $answer): bool | array
         }
 
         return [$answer, "no"];
+    } */
+    if ($isEven && $answer === "no") {
+        return [$answer, "yes"];
+    }
+
+    if (!$isEven && $answer === "yes") {
+            return [$answer, "no"];
+    }
+
+    if (($isEven && $answer === "yes") || (!$isEven && $answer === "no")) {
+        return true;
     }
 }
 
