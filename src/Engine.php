@@ -38,7 +38,7 @@ function startGame(callable $cb, string $question): void
     congratulate($countCorrectAnswers, $name);
 }
 
-function handleResult($answer, $correctAnswer)
+function handleResult(string $answer, string | int $correctAnswer)
 {
     if ($answer == $correctAnswer) {
         return true;
