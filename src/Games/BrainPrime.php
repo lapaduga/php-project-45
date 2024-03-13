@@ -25,21 +25,27 @@ function startBrainPrime()
     startGame($callback, $question);
 }
 
-function handleData(bool $result, string $guess): bool | array
+function handleData(bool $result, string $guess)
 {
-    if ($result === true) {
-        if ($guess === "yes") {
-            return true;
-        }
+    $newResult = true;
 
-        return [$guess, "yes"];
+    if ($result) {
+        $newResult = handlePrimeCase($guess);
     } else {
-        if ($guess === "no") {
-            return true;
-        }
-
-        return [$guess, "no"];
+        $newResult = handleNotPrimeCase($guess);
     }
+
+    return $newResult;
+}
+
+function handlePrimeCase(string $guess)
+{
+    return $guess === "yes" ? true : [$guess, "yes"];
+}
+
+function handleNotPrimeCase(string $guess)
+{
+    return $guess === "no" ? true : [$guess, "no"];
 }
 
 function isPrime(int $number): bool

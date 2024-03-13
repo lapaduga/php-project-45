@@ -28,19 +28,6 @@ function startBrainEvenGame()
 
 function handleData(bool $isEven, string $answer)
 {
-/*     if ($isEven) {
-        if ($answer === "yes") {
-            return true;
-        }
-
-        return [$answer, "yes"];
-    } else {
-        if ($answer === "no") {
-            return true;
-        }
-
-        return [$answer, "no"];
-    } */
     $result = true;
 
     if ($isEven) {
