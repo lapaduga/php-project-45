@@ -19,26 +19,31 @@ function startGame(callable $cb, string $question): void
         $result = $cb();
 
         if ($result === true) {
-                $countCorrectAnswers++;
-                line("Correct!");
+                        $countCorrectAnswers++;
+                        line("Correct!");
         } else {
-                line("\"$result[0]\" is wrong answer ;(. Correct answer was \"$result[1]\".");
-                line("Let's try again, %s!", $name);
-                break;
+                        line("\"$result[0]\" is wrong answer ;(. Correct answer was \"$result[1]\".");
+                        line("Let's try again, %s!", $name);
+                        break;
         }
     }
 
-    if ($countCorrectAnswers === 3) {
-            line("Congratulations, %s!", $name);
-    }
+        congratulate($countCorrectAnswers, $name);
 }
 
 function greet(string $question): string
 {
-		line("Welcome to the Brain Games!");
-		$name = prompt('May I have your name?');
-		line("Hello, %s!", $name);
-		line($question);
+        line("Welcome to the Brain Games!");
+        $name = prompt('May I have your name?');
+        line("Hello, %s!", $name);
+        line($question);
 
-		return $name;
+        return $name;
+}
+
+function congratulate(int $countCorrectAnswers, string $name): void
+{
+    if ($countCorrectAnswers === 3) {
+        line("Congratulations, %s!", $name);
+    }
 }
