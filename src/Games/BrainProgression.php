@@ -2,8 +2,6 @@
 
 namespace BrainGames\Games\BrainProgression;
 
-use function cli\line;
-use function cli\prompt;
 use function BrainGames\Engine\startGame;
 
 function startBrainProgression()
@@ -12,19 +10,11 @@ function startBrainProgression()
 
     $callback = function () {
         $data = createProgression();
-/*         line("Question: $stringArray");
-        $guess = prompt("Your answer"); */
 
         return [
             "question" => $data["question"],
             "correctAnswer" => $data["answer"]
         ];
-
-/*         if ($guess == $hiddenNumber) {
-                return true;
-        } else {
-                return [$guess, $hiddenNumber];
-        } */
     };
 
     startGame($callback, $question);

@@ -2,8 +2,6 @@
 
 namespace BrainGames\Games\BrainPrime;
 
-use function cli\line;
-use function cli\prompt;
 use function BrainGames\Engine\startGame;
 
 use const BrainGames\Engine\MINIMUM_RND_NUMBER;
@@ -16,42 +14,15 @@ function startBrainPrime()
     $callback = function () {
         $number = rand(MINIMUM_RND_NUMBER, MAXIMUM_RND_NUMBER);
         $result = isPrime($number);
-/*         line("Question: $number");
-        $guess = prompt("Your answer"); */
 
         return [
             "question" => "$number",
             "correctAnswer" => $result
         ];
-
-        /* return handleData($result, $guess); */
     };
 
     startGame($callback, $question);
 }
-
-/* function handleData(bool $result, string $guess)
-{
-    $newResult = true;
-
-    if ($result) {
-        $newResult = handlePrimeCase($guess);
-    } else {
-        $newResult = handleNotPrimeCase($guess);
-    }
-
-    return $newResult;
-}
-
-function handlePrimeCase(string $guess)
-{
-    return $guess === "yes" ? true : [$guess, "yes"];
-}
-
-function handleNotPrimeCase(string $guess)
-{
-    return $guess === "no" ? true : [$guess, "no"];
-} */
 
 function isPrime(int $number): string
 {

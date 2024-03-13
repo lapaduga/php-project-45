@@ -2,8 +2,6 @@
 
 namespace BrainGames\Games\BrainEven;
 
-use function cli\line;
-use function cli\prompt;
 use function BrainGames\Engine\startGame;
 
 use const BrainGames\Engine\MINIMUM_RND_NUMBER;
@@ -21,35 +19,10 @@ function startBrainEvenGame()
             "question" => "$randomNumber",
             "correctAnswer" => $isEven
         ];
-
-        /* return handleData($isEven, $answer); */
     };
 
     startGame($callback, $question);
 }
-
-/* function handleData(bool $isEven, string $answer)
-{
-    $result = true;
-
-    if ($isEven) {
-        $result = handleEvenCase($answer);
-    } else {
-        $result = handleNotEvenCase($answer);
-    }
-
-    return $result;
-}
-
-function handleEvenCase(string $answer)
-{
-    return $answer === "yes" ? true : [$answer, "yes"];
-}
-
-function handleNotEvenCase(string $answer)
-{
-    return $answer === "no" ? true : [$answer, "no"];
-} */
 
 function isEven(int $number): string
 {

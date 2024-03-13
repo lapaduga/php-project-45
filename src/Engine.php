@@ -23,11 +23,7 @@ function startGame(callable $cb, string $question): void
         line("Question: $gameQuestion");
         $answer = prompt("Your answer");
 
-        if ($answer == $correctAnswer) {
-            $data["result"] = true;
-        } else {
-            $data["result"] = [$answer, $correctAnswer];
-        }
+        $data["result"] = handleResult($answer, $correctAnswer);
 
         if ($data["result"] === true) {
             $countCorrectAnswers++;
@@ -40,6 +36,15 @@ function startGame(callable $cb, string $question): void
     }
 
     congratulate($countCorrectAnswers, $name);
+}
+
+function handleResult($answer, $correctAnswer)
+{
+    if ($answer == $correctAnswer) {
+        return true;
+    } else {
+        return [$answer, $correctAnswer];
+    }
 }
 
 function greet(string $question): string
