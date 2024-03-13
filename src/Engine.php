@@ -31,7 +31,9 @@ function startGame(callable $cb, string $question): void
         }
     }
 
-    if ($countCorrectAnswers === 3) {
+/*     if ($countCorrectAnswers === 3) {
             line("Congratulations, %s!", $name);
-    }
+    } */
+
+    $countCorrectAnswers === 3 ?: line("Congratulations, %s!", $name);
 }
