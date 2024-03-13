@@ -43,9 +43,9 @@ function handleData(bool $isEven, string $answer)
     } */
     if ($isEven) {
         return handleEvenCase($answer);
+    } else {
+                return handleNotEvenCase($answer);
     }
-
-    return handleNotEvenCase($answer);
 }
 
 function handleEvenCase(string $answer)
