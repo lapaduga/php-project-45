@@ -41,21 +41,25 @@ function handleData(bool $isEven, string $answer)
 
         return [$answer, "no"];
     } */
+    $result = true;
+
     if ($isEven) {
-        return handleEvenCase($answer);
+        $result = handleEvenCase($answer);
     } else {
-                return handleNotEvenCase($answer);
+        $result = handleNotEvenCase($answer);
     }
+
+    return $result;
 }
 
 function handleEvenCase(string $answer)
 {
-    $answer === "yes" ? true : [$answer, "yes"];
+    return $answer === "yes" ? true : [$answer, "yes"];
 }
 
 function handleNotEvenCase(string $answer)
 {
-    $answer === "no" ? true : [$answer, "no"];
+    return $answer === "no" ? true : [$answer, "no"];
 }
 
 function isEven(int $number): bool
