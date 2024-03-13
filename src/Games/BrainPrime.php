@@ -50,23 +50,40 @@ function handleNotPrimeCase(string $guess)
 
 function isPrime(int $number): bool
 {
-    if ($number == 2) {
-        return true;
+    $result = true;
+
+/*     if ($number == 2) {
+        $result = true;
     }
 
     if ($number == 1 || $number % 2 == 0) {
-        return false;
-    }
+        $result = false;
+    } */
+
+    $result = handleSimpleCases($number);
 
     $i = 3;
     $max_factor = (int)sqrt($number);
 
     while ($i <= $max_factor) {
         if ($number % $i == 0) {
-            return false;
+            $result = false;
         }
 
         $i += 2;
+    }
+
+    return $result;
+}
+
+function handleSimpleCases(int $number)
+{
+    if ($number == 2) {
+        return true;
+    }
+
+    if ($number == 1 || $number % 2 == 0) {
+        return false;
     }
 
     return true;
