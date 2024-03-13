@@ -22,14 +22,10 @@ function startBrainCalc()
 
         $result = getResult($randomNumber1, $randomNumber2, $randomOperation);
 
-        line("Question: $randomNumber1 $randomOperation $randomNumber2");
-        $answer = prompt("Your answer");
-
-        if ((int)$answer === $result) {
-            return true;
-        } else {
-            return [$answer, $result];
-        }
+        return [
+            "question" => "$randomNumber1 $randomOperation $randomNumber2",
+            "correctAnswer" => $result
+        ];
     };
 
     startGame($callback, $question);

@@ -17,23 +17,28 @@ function startBrainGcd()
         $randomNumber1 = rand(MINIMUM_RND_NUMBER, MAXIMUM_RND_NUMBER);
         $randomNumber2 = rand(MINIMUM_RND_NUMBER, MAXIMUM_RND_NUMBER);
         $result = gcd($randomNumber1, $randomNumber2);
-        line("Question: $randomNumber1 $randomNumber2");
-        $answer = prompt("Your answer");
+        /* line("Question: $randomNumber1 $randomNumber2");
+        $answer = prompt("Your answer"); */
 
-        return handleData($answer, $result);
+        return [
+            "question" => "$randomNumber1 $randomNumber2",
+            "correctAnswer" => $result
+        ];
+
+        /* return handleData($answer, $result); */
     };
 
     startGame($callback, $question);
 }
 
-function handleData(string $answer, int $result): bool | array
+/* function handleData(string $answer, int $result): bool | array
 {
     if ($answer == $result) {
             return true;
     } else {
             return [$answer, $result];
     }
-}
+} */
 
 function gcd(int $a, int $b): int
 {

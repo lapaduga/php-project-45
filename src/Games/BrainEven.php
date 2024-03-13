@@ -15,18 +15,20 @@ function startBrainEvenGame()
 
     $callback = function () {
         $randomNumber = rand(MINIMUM_RND_NUMBER, MAXIMUM_RND_NUMBER);
-        line("Question: $randomNumber");
-        $answer = prompt("Your answer");
-
         $isEven = isEven($randomNumber);
 
-        return handleData($isEven, $answer);
+        return [
+            "question" => "$randomNumber",
+            "correctAnswer" => $isEven
+        ];
+
+        /* return handleData($isEven, $answer); */
     };
 
     startGame($callback, $question);
 }
 
-function handleData(bool $isEven, string $answer)
+/* function handleData(bool $isEven, string $answer)
 {
     $result = true;
 
@@ -47,9 +49,9 @@ function handleEvenCase(string $answer)
 function handleNotEvenCase(string $answer)
 {
     return $answer === "no" ? true : [$answer, "no"];
-}
+} */
 
-function isEven(int $number): bool
+function isEven(int $number): string
 {
-    return $number % 2 === 0;
+    return $number % 2 === 0 ? "yes" : "no";
 }

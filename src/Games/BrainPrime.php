@@ -16,16 +16,21 @@ function startBrainPrime()
     $callback = function () {
         $number = rand(MINIMUM_RND_NUMBER, MAXIMUM_RND_NUMBER);
         $result = isPrime($number);
-        line("Question: $number");
-        $guess = prompt("Your answer");
+/*         line("Question: $number");
+        $guess = prompt("Your answer"); */
 
-        return handleData($result, $guess);
+        return [
+            "question" => "$number",
+            "correctAnswer" => $result
+        ];
+
+        /* return handleData($result, $guess); */
     };
 
     startGame($callback, $question);
 }
 
-function handleData(bool $result, string $guess)
+/* function handleData(bool $result, string $guess)
 {
     $newResult = true;
 
@@ -46,11 +51,11 @@ function handlePrimeCase(string $guess)
 function handleNotPrimeCase(string $guess)
 {
     return $guess === "no" ? true : [$guess, "no"];
-}
+} */
 
-function isPrime(int $number): bool
+function isPrime(int $number): string
 {
-    $result = true;
+    $result = "yes";
 
     $result = handleSimpleCases($number);
 
@@ -59,7 +64,7 @@ function isPrime(int $number): bool
 
     while ($i <= $max_factor) {
         if ($number % $i == 0) {
-            $result = false;
+            $result = "no";
         }
 
         $i += 2;
@@ -68,15 +73,15 @@ function isPrime(int $number): bool
     return $result;
 }
 
-function handleSimpleCases(int $number)
+function handleSimpleCases(int $number): string
 {
     if ($number == 2) {
-        return true;
+        return "yes";
     }
 
     if ($number == 1 || $number % 2 == 0) {
-        return false;
+        return "no";
     }
 
-    return true;
+    return "yes";
 }
