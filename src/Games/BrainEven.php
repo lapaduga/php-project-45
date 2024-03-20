@@ -9,22 +9,22 @@ use const BrainGames\Engine\MAXIMUM_RND_NUMBER;
 
 function startBrainEvenGame()
 {
-    $question = 'Answer "yes" if the number is even, otherwise answer "no".';
+    $description = 'Answer "yes" if the number is even, otherwise answer "no".';
 
     $callback = function () {
         $randomNumber = rand(MINIMUM_RND_NUMBER, MAXIMUM_RND_NUMBER);
-        $isEven = isEven($randomNumber);
+        $correctAnswer = getIsEvenAnswer($randomNumber);
 
         return [
-            "question" => "$randomNumber",
-            "correctAnswer" => $isEven
+            'question' => (string)$randomNumber,
+            'correctAnswer' => $correctAnswer
         ];
     };
 
-    startGame($callback, $question);
+    startGame($callback, $description);
 }
 
-function isEven(int $number): string
+function getIsEvenAnswer(int $number): string
 {
-    return $number % 2 === 0 ? "yes" : "no";
+    return $number % 2 === 0 ? 'yes' : 'no';
 }

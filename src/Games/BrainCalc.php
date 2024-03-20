@@ -9,34 +9,35 @@ use const BrainGames\Engine\MAXIMUM_RND_NUMBER;
 
 function startBrainCalc()
 {
-    $question = "What is the result of the expression?";
+    $description = 'What is the result of the expression?';
 
     $callback = function () {
-        $operations = ["+", "-", "*"];
+        $operations = ['+', '-', '*'];
         $randomNumber1 = rand(MINIMUM_RND_NUMBER, MAXIMUM_RND_NUMBER);
         $randomNumber2 = rand(MINIMUM_RND_NUMBER, MAXIMUM_RND_NUMBER);
-        $randomOperation = $operations[rand(MINIMUM_RND_NUMBER, count($operations) - 1)];
-        $result = null;
+        $randomOperation = $operations[array_rand($operations, 1)];
 
         $result = getResult($randomNumber1, $randomNumber2, $randomOperation);
 
         return [
-            "question" => "$randomNumber1 $randomOperation $randomNumber2",
-            "correctAnswer" => $result
+            'question' => "{$randomNumber1} {$randomOperation} {$randomNumber2}",
+            'correctAnswer' => $result
         ];
     };
 
-    startGame($callback, $question);
+    startGame($callback, $description);
 }
 
-function getResult(int $number1, int $number2, string $operand): int
+function getResult(int $number1, int $number2, string $operator)
 {
-    switch ($operand) {
+    switch ($operator) {
         case '+':
             return $number1 + $number2;
         case '-':
             return $number1 - $number2;
-        default:
+        case '*':
             return $number1 * $number2;
+        default:
+            break;
     }
 }

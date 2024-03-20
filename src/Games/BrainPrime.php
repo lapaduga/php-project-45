@@ -9,33 +9,31 @@ use const BrainGames\Engine\MAXIMUM_RND_NUMBER;
 
 function startBrainPrime()
 {
-    $question = 'Answer "yes" if given number is prime. Otherwise answer "no".';
+    $description = 'Answer "yes" if given number is prime. Otherwise answer "no".';
 
     $callback = function () {
         $number = rand(MINIMUM_RND_NUMBER, MAXIMUM_RND_NUMBER);
         $result = isPrime($number);
 
         return [
-            "question" => "$number",
-            "correctAnswer" => $result
+            'question' => (string)$number,
+            'correctAnswer' => $result
         ];
     };
 
-    startGame($callback, $question);
+    startGame($callback, $description);
 }
 
 function isPrime(int $number): string
 {
-    $result = "yes";
-
     $result = handleSimpleCases($number);
 
     $i = 3;
     $max_factor = (int)sqrt($number);
 
     while ($i <= $max_factor) {
-        if ($number % $i == 0) {
-            $result = "no";
+        if ($number % $i === 0) {
+            $result = 'no';
         }
 
         $i += 2;
@@ -46,13 +44,13 @@ function isPrime(int $number): string
 
 function handleSimpleCases(int $number): string
 {
-    if ($number == 2) {
-        return "yes";
+    if ($number === 2) {
+        return 'yes';
     }
 
-    if ($number == 1 || $number % 2 == 0) {
-        return "no";
+    if ($number === 1 || $number % 2 === 0) {
+        return 'no';
     }
 
-    return "yes";
+    return 'yes';
 }

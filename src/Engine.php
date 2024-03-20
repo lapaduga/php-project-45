@@ -9,25 +9,25 @@ const COUNT_CORRECT_ANSWERS = 3;
 const MINIMUM_RND_NUMBER = 0;
 const MAXIMUM_RND_NUMBER = 10;
 
-function startGame(callable $cb, string $question): void
+function startGame(callable $cb, string $description): void
 {
-    $name = greet($question);
+    $name = handleGameStart($description);
 
     $countCorrectAnswers = 0;
 
     for ($i = 0; $i < COUNT_CORRECT_ANSWERS; $i++) {
         $data = $cb();
-        $gameQuestion = $data["question"];
-        $correctAnswer = $data["correctAnswer"];
+        $gameQuestion = $data['question'];
+        $correctAnswer = (string)$data['correctAnswer'];
 
         line("Question: $gameQuestion");
-        $answer = prompt("Your answer");
+        $answer = prompt('Your answer');
 
-        $data["result"] = handleResult($answer, $correctAnswer);
+        $data['result'] = handleResult($answer, $correctAnswer);
 
-        if ($data["result"] === true) {
+        if ($data['result'] === true) {
             $countCorrectAnswers++;
-            line("Correct!");
+            line('Correct!');
         } else {
             line("\"$answer\" is wrong answer ;(. Correct answer was \"$correctAnswer\".");
             line("Let's try again, %s!", $name);
@@ -38,28 +38,28 @@ function startGame(callable $cb, string $question): void
     congratulate($countCorrectAnswers, $name);
 }
 
-function handleResult(string $answer, string | int $correctAnswer)
+function handleResult(string $answer, string $correctAnswer)
 {
-    if ($answer == $correctAnswer) {
+    if ($answer === $correctAnswer) {
         return true;
     } else {
         return [$answer, $correctAnswer];
     }
 }
 
-function greet(string $question): string
+function handleGameStart(string $description): string
 {
-    line("Welcome to the Brain Games!");
+    line('Welcome to the Brain Games!');
     $name = prompt('May I have your name?');
-    line("Hello, %s!", $name);
-    line($question);
+    line('Hello, %s!', $name);
+    line($description);
 
     return $name;
 }
 
 function congratulate(int $countCorrectAnswers, string $name): void
 {
-    if ($countCorrectAnswers === 3) {
-        line("Congratulations, %s!", $name);
+    if ($countCorrectAnswers === COUNT_CORRECT_ANSWERS) {
+        line('Congratulations, %s!', $name);
     }
 }

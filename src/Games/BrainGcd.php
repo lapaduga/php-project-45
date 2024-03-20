@@ -9,7 +9,7 @@ use const BrainGames\Engine\MAXIMUM_RND_NUMBER;
 
 function startBrainGcd()
 {
-    $question = "Find the greatest common divisor of given numbers.";
+    $description = 'Find the greatest common divisor of given numbers.';
 
     $callback = function () {
         $randomNumber1 = rand(MINIMUM_RND_NUMBER, MAXIMUM_RND_NUMBER);
@@ -17,12 +17,12 @@ function startBrainGcd()
         $result = gcd($randomNumber1, $randomNumber2);
 
         return [
-            "question" => "$randomNumber1 $randomNumber2",
-            "correctAnswer" => $result
+            'question' => "{$randomNumber1} {$randomNumber2}",
+            'correctAnswer' => $result
         ];
     };
 
-    startGame($callback, $question);
+    startGame($callback, $description);
 }
 
 function gcd(int $a, int $b): int
