@@ -15,11 +15,7 @@ function startBrainPrime()
         $number = rand(MINIMUM_RND_NUMBER, MAXIMUM_RND_NUMBER);
         $result = isPrime($number);
 
-        if ($result) {
-            $correctAnswer = 'yes';
-        } else {
-            $correctAnswer = 'no';
-        }
+        $correctAnswer = defineCorrectAnswer($result);
 
         return [
             'question' => (string)$number,
@@ -55,4 +51,13 @@ function handleSimpleCases(int $number): bool
     }
 
     return true;
+}
+
+function defineCorrectAnswer(bool $result): string
+{
+    if ($result) {
+        return 'yes';
+    } else {
+        return 'no';
+    }
 }

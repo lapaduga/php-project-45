@@ -12,17 +12,13 @@ function startBrainEvenGame()
     $description = 'Answer "yes" if the number is even, otherwise answer "no".';
 
     $callback = function () {
-        $randomNumber = rand(MINIMUM_RND_NUMBER, MAXIMUM_RND_NUMBER);
-        $result = isEven($randomNumber);
+        $number = rand(MINIMUM_RND_NUMBER, MAXIMUM_RND_NUMBER);
+        $result = isEven($number);
 
-        if ($result) {
-            $correctAnswer = 'yes';
-        } else {
-            $correctAnswer = 'no';
-        }
+        $correctAnswer = defineCorrectAnswer($result);
 
         return [
-            'question' => (string)$randomNumber,
+            'question' => (string)$number,
             'correctAnswer' => $correctAnswer
         ];
     };
@@ -33,4 +29,13 @@ function startBrainEvenGame()
 function isEven(int $number): bool
 {
     return $number % 2 === 0 ? true : false;
+}
+
+function defineCorrectAnswer(bool $result): string
+{
+    if ($result) {
+        return 'yes';
+    } else {
+        return 'no';
+    }
 }
