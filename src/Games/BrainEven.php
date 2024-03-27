@@ -30,7 +30,7 @@ function startBrainEvenGame()
     startGame($callback, $description);
 }
 
-function isEven(int $number): string
+function isEven(int $number): bool
 {
     return $number % 2 === 0 ? true : false;
 }

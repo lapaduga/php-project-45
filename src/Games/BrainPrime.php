@@ -30,7 +30,7 @@ function startBrainPrime()
     startGame($callback, $description);
 }
 
-function isPrime(int $number): string
+function isPrime(int $number): bool
 {
     $result = handleSimpleCases($number);
     $maxFactor = (int)sqrt($number);
@@ -44,7 +44,7 @@ function isPrime(int $number): string
     return $result;
 }
 
-function handleSimpleCases(int $number): string
+function handleSimpleCases(int $number): bool
 {
     if ($number === 2) {
         return true;
