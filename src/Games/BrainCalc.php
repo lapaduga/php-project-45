@@ -17,7 +17,7 @@ function startBrainCalc()
         $randomNumber2 = rand(MINIMUM_RND_NUMBER, MAXIMUM_RND_NUMBER);
         $randomOperation = $operations[array_rand($operations, 1)];
 
-        $result = getResult($randomNumber1, $randomNumber2, $randomOperation);
+        $result = (string)getResult($randomNumber1, $randomNumber2, $randomOperation);
 
         return [
             'question' => "{$randomNumber1} {$randomOperation} {$randomNumber2}",

@@ -14,7 +14,7 @@ function startBrainGcd()
     $callback = function () {
         $randomNumber1 = rand(MINIMUM_RND_NUMBER, MAXIMUM_RND_NUMBER);
         $randomNumber2 = rand(MINIMUM_RND_NUMBER, MAXIMUM_RND_NUMBER);
-        $result = gcd($randomNumber1, $randomNumber2);
+        $result = (string)gcd($randomNumber1, $randomNumber2);
 
         return [
             'question' => "{$randomNumber1} {$randomNumber2}",

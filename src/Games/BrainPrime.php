@@ -15,9 +15,15 @@ function startBrainPrime()
         $number = rand(MINIMUM_RND_NUMBER, MAXIMUM_RND_NUMBER);
         $result = isPrime($number);
 
+        if ($result) {
+            $correctAnswer = 'yes';
+        } else {
+            $correctAnswer = 'no';
+        }
+
         return [
             'question' => (string)$number,
-            'correctAnswer' => $result
+            'correctAnswer' => $correctAnswer
         ];
     };
 
@@ -27,16 +33,12 @@ function startBrainPrime()
 function isPrime(int $number): string
 {
     $result = handleSimpleCases($number);
+    $maxFactor = (int)sqrt($number);
 
-    $i = 3;
-    $max_factor = (int)sqrt($number);
-
-    while ($i <= $max_factor) {
+    for ($i = 3; $i <= $maxFactor; $i += 2) {
         if ($number % $i === 0) {
-            $result = 'no';
+            $result = false;
         }
-
-        $i += 2;
     }
 
     return $result;
@@ -45,12 +47,12 @@ function isPrime(int $number): string
 function handleSimpleCases(int $number): string
 {
     if ($number === 2) {
-        return 'yes';
+        return true;
     }
 
     if ($number === 1 || $number % 2 === 0) {
-        return 'no';
+        return false;
     }
 
-    return 'yes';
+    return true;
 }

@@ -18,33 +18,22 @@ function startGame(callable $cb, string $description): void
     for ($i = 0; $i < COUNT_CORRECT_ANSWERS; $i++) {
         $data = $cb();
         $gameQuestion = $data['question'];
-        $correctAnswer = (string)$data['correctAnswer'];
+        $correctAnswer = $data['correctAnswer'];
 
         line("Question: $gameQuestion");
         $answer = prompt('Your answer');
 
-        $data['result'] = handleResult($answer, $correctAnswer);
-
-        if ($data['result'] === true) {
+        if ($answer === $correctAnswer) {
             $countCorrectAnswers++;
             line('Correct!');
         } else {
             line("\"$answer\" is wrong answer ;(. Correct answer was \"$correctAnswer\".");
             line("Let's try again, %s!", $name);
-            break;
+            return;
         }
     }
 
-    congratulate($countCorrectAnswers, $name);
-}
-
-function handleResult(string $answer, string $correctAnswer)
-{
-    if ($answer === $correctAnswer) {
-        return true;
-    } else {
-        return [$answer, $correctAnswer];
-    }
+    line('Congratulations, %s!', $name);
 }
 
 function handleGameStart(string $description): string
@@ -55,11 +44,4 @@ function handleGameStart(string $description): string
     line($description);
 
     return $name;
-}
-
-function congratulate(int $countCorrectAnswers, string $name): void
-{
-    if ($countCorrectAnswers === COUNT_CORRECT_ANSWERS) {
-        line('Congratulations, %s!', $name);
-    }
 }

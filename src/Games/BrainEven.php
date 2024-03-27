@@ -13,7 +13,13 @@ function startBrainEvenGame()
 
     $callback = function () {
         $randomNumber = rand(MINIMUM_RND_NUMBER, MAXIMUM_RND_NUMBER);
-        $correctAnswer = getIsEvenAnswer($randomNumber);
+        $result = isEven($randomNumber);
+
+        if ($result) {
+            $correctAnswer = 'yes';
+        } else {
+            $correctAnswer = 'no';
+        }
 
         return [
             'question' => (string)$randomNumber,
@@ -24,7 +30,7 @@ function startBrainEvenGame()
     startGame($callback, $description);
 }
 
-function getIsEvenAnswer(int $number): string
+function isEven(int $number): string
 {
-    return $number % 2 === 0 ? 'yes' : 'no';
+    return $number % 2 === 0 ? true : false;
 }
