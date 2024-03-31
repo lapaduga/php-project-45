@@ -28,14 +28,10 @@ function startBrainEvenGame()
 
 function isEven(int $number): bool
 {
-    return $number % 2 === 0 ? true : false;
+    return $number % 2 === 0;
 }
 
 function defineCorrectAnswer(bool $result): string
 {
-    if ($result) {
-        return 'yes';
-    } else {
-        return 'no';
-    }
+    return $result === true ? 'yes' : 'no';
 }
